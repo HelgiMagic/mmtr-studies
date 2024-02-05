@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-/* eslint-disable no-console */
 
 // Написать функцию, которая на вход принимает целое число и возвращает факториал этого числа.
 function factorial(n) {
