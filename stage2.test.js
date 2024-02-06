@@ -41,5 +41,4 @@ assert.deepEqual(smallNumberArray.myFind((num, i, array) => num === array[i]), 0
 assert.deepEqual(smallNumberArray.mySome((num, i, array) => num === array[i]), true);
 assert.deepEqual(smallNumberArray.myEvery((num, i, array) => num === array[i]), true);
 
-
 console.log('Все тесты пройдены!');
