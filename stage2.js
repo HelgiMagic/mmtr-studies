@@ -4,7 +4,7 @@ function myMap(array, cb) {
   const newArray = [];
 
   for (let i = 0; i < array.length; i += 1) {
-    newArray.push(cb(array[i], i));
+    newArray.push(cb(array[i], i, array));
   }
 
   return newArray;
@@ -16,7 +16,7 @@ function myFilter(array, cb) {
   const newArray = [];
 
   for (let i = 0; i < array.length; i += 1) {
-    if (cb(array[i], i)) {
+    if (cb(array[i], i, array)) {
       newArray.push(array[i]);
     }
   }
@@ -28,7 +28,7 @@ console.log(myFilter([1, 2, 3, 4, 5, 6], (num) => num % 2 !== 0));
 
 function myFind(array, cb) {
   for (let i = 0; i < array.length; i += 1) {
-    if (cb(array[i], i)) {
+    if (cb(array[i], i, array)) {
       return array[i];
     }
   }
@@ -40,7 +40,7 @@ console.log(myFind([0, 1, 2, 3, 4, 5, 6], (num) => num > 3));
 
 function mySome(array, cb) {
   for (let i = 0; i < array.length; i += 1) {
-    if (cb(array[i], i)) {
+    if (cb(array[i], i, array)) {
       return true;
     }
   }
@@ -54,7 +54,7 @@ console.log(mySome(numberArray, (num) => num > 3));
 
 function myEvery(array, cb) {
   for (let i = 0; i < array.length; i += 1) {
-    if (!cb(array[i], i)) {
+    if (!cb(array[i], i, array)) {
       return false;
     }
   }
