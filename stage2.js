@@ -1,46 +1,51 @@
 // Написать свою реализацию функций: map, filter, find, some, every.
-
-function myMap(array, cb) {
+function myMap(cb) {
   const newArray = [];
 
-  for (let i = 0; i < array.length; i += 1) {
-    newArray.push(cb(array[i], i, array));
+  for (let i = 0; i < this.length; i += 1) {
+    newArray.push(cb(this[i], i, this));
   }
 
   return newArray;
 }
 
-console.log(myMap([1, 2, 3, 4, 5], (num, i) => num * 100 + i));
+Array.prototype.myMap = myMap;
 
-function myFilter(array, cb) {
+console.log([1, 2, 3, 4, 5].myMap((num, i) => num * 100 + i));
+
+function myFilter(cb) {
   const newArray = [];
 
-  for (let i = 0; i < array.length; i += 1) {
-    if (cb(array[i], i, array)) {
-      newArray.push(array[i]);
+  for (let i = 0; i < this.length; i += 1) {
+    if (cb(this[i], i, this)) {
+      newArray.push(this[i]);
     }
   }
 
   return newArray;
 }
 
-console.log(myFilter([1, 2, 3, 4, 5, 6], (num) => num % 2 !== 0));
+Array.prototype.myFilter = myFilter;
 
-function myFind(array, cb) {
-  for (let i = 0; i < array.length; i += 1) {
-    if (cb(array[i], i, array)) {
-      return array[i];
+console.log([1, 2, 3, 4, 5, 6].filter((num) => num % 2 !== 0));
+
+function myFind(cb) {
+  for (let i = 0; i < this.length; i += 1) {
+    if (cb(this[i], i, this)) {
+      return this[i];
     }
   }
 
   return undefined;
 }
 
-console.log(myFind([0, 1, 2, 3, 4, 5, 6], (num) => num > 3));
+Array.prototype.myFind = myFind;
 
-function mySome(array, cb) {
-  for (let i = 0; i < array.length; i += 1) {
-    if (cb(array[i], i, array)) {
+console.log([0, 1, 2, 3, 4, 5, 6].myFind((num) => num > 3));
+
+function mySome(cb) {
+  for (let i = 0; i < this.length; i += 1) {
+    if (cb(this[i], i, this)) {
       return true;
     }
   }
@@ -48,13 +53,15 @@ function mySome(array, cb) {
   return false;
 }
 
+Array.prototype.mySome = mySome;
+
 const numberArray = [0, 1, 2, 3, 4, 5, 6];
 
-console.log(mySome(numberArray, (num) => num > 3));
+console.log(numberArray.mySome((num) => num > 3));
 
-function myEvery(array, cb) {
-  for (let i = 0; i < array.length; i += 1) {
-    if (!cb(array[i], i, array)) {
+function myEvery(cb) {
+  for (let i = 0; i < this.length; i += 1) {
+    if (!cb(this[i], i, this)) {
       return false;
     }
   }
@@ -62,8 +69,10 @@ function myEvery(array, cb) {
   return true;
 }
 
-console.log(myEvery(numberArray, (num) => num > 3));
-console.log(mySome(numberArray, (num) => num > -1));
+Array.prototype.myEvery = myEvery;
+
+console.log(numberArray.myEvery((num) => num > 3));
+console.log(numberArray.myEvery((num) => num > -1));
 
 export {
   myMap, myFilter, myFind, mySome, myEvery,

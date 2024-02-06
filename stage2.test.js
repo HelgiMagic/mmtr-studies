@@ -6,6 +6,8 @@ const numberArray = [0, 1, 2, 3, 4, 5, 6];
 const cleanArray = [];
 const smallNumberArray = [0, 1, 3];
 
+console.log(numberArray.myMap((num) => num + 2));
+
 assert.deepEqual(myArrFunction.myMap(numberArray, (num) => num + 2), [2, 3, 4, 5, 6, 7, 8]);
 assert.deepEqual(myArrFunction.myMap(cleanArray, (num) => num + 2), []);
 assert.deepEqual(myArrFunction.myMap(smallNumberArray, (num, i) => num + i), [0, 2, 5]); // i working
